@@ -2,7 +2,6 @@ using System;
 
 class Journal
 {
-    public string _name;
     public List<Entry> _entries = new List<Entry>();
     public void AddEntry(Entry  entry)
     {

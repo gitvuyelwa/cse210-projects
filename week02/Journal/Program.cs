@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks.Dataflow;
 using Microsoft.VisualBasic;
 
 class Program
@@ -7,98 +8,95 @@ class Program
     {
         Console.WriteLine("Welcome to the Journal Program!");
         Console.WriteLine("What is the date? ");
-        string date = Console.ReadLine();
-
+        string _date = Console.ReadLine();
 
         Entry entry1 = new Entry();
-        Console.WriteLine("What was the best part of my day? ");
-        entry1._entryText = Console.ReadLine();
+        Console.WriteLine("1.What was the best part of my day? ");
         entry1._promptText ="What was the best part of my day? ";
         
-
         Entry entry2 = new Entry();
-        Console.WriteLine("How did I see the hand of the Lord in my life today? ");
-        entry2._entryText = Console.ReadLine();
+        Console.WriteLine("2.How did I see the hand of the Lord in my life today? ");
         entry2._promptText = "How did I see the hand of the Lord in my life today? ";
 
         Entry entry3 = new Entry();
-        Console.WriteLine("What was the strongest emotion I felt today? ");
-        entry3._entryText = Console.ReadLine();
+        Console.WriteLine("3.What was the strongest emotion I felt today? ");
         entry3._promptText = "What was the strongest emotion I felt today? ";
 
         Entry entry4 = new Entry();
-        Console.WriteLine("If I had one thing I could do over today, what would it be? ");
-        entry4._entryText = Console.ReadLine();
+        Console.WriteLine("4.If I had one thing I could do over today, what would it be? ");
         entry4._promptText = "If I had one thing I could do over today, what would it be? ";
 
         Entry entry5 = new Entry();
-        Console.WriteLine("What are you going to do differently tomorrow? ");
-        entry5._entryText = Console.ReadLine();
+        Console.WriteLine("5.What are you going to do differently tomorrow? ");
         entry5._promptText = "What are you going to do differently tomorrow? ";
 
         Entry entry6 = new Entry();
-        Console.WriteLine("What is somthing you wish you did today? ");  
-        entry6._entryText = Console.ReadLine();
-        entry6._promptText = "What is somthing you wish you did today? ";
+        Console.WriteLine("6.What is something you wish you did today? ");  
+        entry6._promptText = "What is something you wish you did today? ";
         
         Entry entry7 = new Entry();
-        Console.WriteLine("What did you learn about yourself today? ");
-        entry7._entryText = Console.ReadLine();
+        Console.WriteLine("7.What did you learn about yourself today? ");
         entry7._promptText = "What did you learn about yourself today? ";
 
-        
-        
-        
-        Journal myPrompt = new Journal();
+        Entry entry8 = new Entry();
+        Console.WriteLine("8.Your Journal: ");
+        entry8._promptText = "Your Journal: ";
 
-        myPrompt._name.Add(date);
-        myPrompt._entries.Add(entry1);
-        myPrompt._entries.Add(entry2);
-        myPrompt._entries.Add(entry3);
-        myPrompt._entries.Add(entry4);
-        myPrompt._entries.Add(entry5);
-        myPrompt._entries.Add(entry6);
-        myPrompt._entries.Add(entry7);
-
-        myPrompt.Display();
-        myPrompt.SaveToFile("journal.txt");
-        myPrompt.LoadFromFile("journal.txt");
-            Console.Write("Pick a number between 1 and 7: " );
+        Console.WriteLine("Pick a number between 1 and 7 to answer one of the above displayed Questions. To include any other information in your journal enter 8, to quit your entry enter 0: " );
             int prompt = int.Parse(Console.ReadLine());
-                if (prompt == 1)
+                if (prompt == 0)
                 {
-                    entry1.Display();
+                    Console.WriteLine("Thank you for using the Journal Program. Goodbye!");
+                }
+                else if (prompt == 1)
+                {
+                    Console.WriteLine("What was the best part of my day? ");
+                    entry1._entryText = Console.ReadLine();
+                    
                 }
                 else if (prompt == 2)
                 {
-                    entry2.Display();
+                    Console.WriteLine("How did I see the hand of the Lord in my life today? ");
+                    entry2._entryText = Console.ReadLine();
                 }
                 else if (prompt == 3)
                 {
-                    entry3.Display();
+                    Console.WriteLine("What was the strongest emotion I felt today? ");
+                    entry3._entryText = Console.ReadLine();
                 }
                 else if (prompt == 4)
                 {
-                    entry4.Display();
+                    Console.WriteLine("If I had one thing I could do over today, what would it be? ");
+                    entry4._entryText = Console.ReadLine();
                 }
                 else if (prompt == 5)
                 {
-                    entry5.Display();
+                    Console.WriteLine("What are you going to do differently tomorrow? ");
+                    entry5._entryText = Console.ReadLine();
                 }
                 else if (prompt == 6)
                 {
-                    entry6.Display();
+                    Console.WriteLine("What is somthing you wish you did today? ");  
+                    entry6._entryText = Console.ReadLine();
                 }
                 else if (prompt == 7)
                 {
-                    entry7.Display();
+                    Console.WriteLine("What did you learn about yourself today? ");
+                    entry7._entryText = Console.ReadLine();
                 }
+                // prompt 8 allows them to enter any other information they want to include in their journal entry.
+                else if (prompt == 8)
+                {
+                    
+                    Console.WriteLine("Your Journal: ");
+                    entry8._entryText = Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a number between 1 and 8 or 0 to quit.");
+                }
+        Console.WriteLine("Thank you for using the Journal Program. Goodbye!");
 
-        
             
     }   
-}
-
-internal class PromptGenerator
-{
 }
