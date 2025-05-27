@@ -7,13 +7,21 @@ public class Reference
     private int _verse;
     private int _verseEnd;
 
-    public Reference()
+    public Reference(string book, int chapter, int verse)
     {
-        _book = "John";
-        _chapter = 3;
-        _verse = 16;
-        _verseEnd = 17;
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
     }
+    
+    public Reference(string book, int chapter, int verse, int verseEnd)
+    {
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
+        _verseEnd = verseEnd;
+    }
+
 
     public string GetDisplayText()
     {

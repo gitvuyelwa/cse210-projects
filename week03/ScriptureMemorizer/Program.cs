@@ -1,62 +1,50 @@
 using System;
-
-public class Scripture
+//program shows a clue for the first letter of every hidden word
+class Program
 {
-    private Reference _reference;
-    public List<Word> _words;
-
-    public Scripture(Reference reference, string text)
+    static void Main(string[] args)
     {
-        _reference = reference;
-        _words = new List<Word>();
-        string[] wordArray = text.Split(' ');
+        Console.WriteLine("Welcome to the Scripture Memorizer!");
+        Console.WriteLine("You can memorize a scripture by hiding random words.");
+        Console.WriteLine("Type 'quit' to exit the program.");
+        Console.WriteLine("Type 'clue' to get a clue for the first letter of a word.");
 
-        foreach (string wordText in wordArray)
-        {
-            Word word = new Word();
-            _words.Add(word);
-        }
-    }
-    
-    
-    public void HideRandomWords(int numberToHide)
-    {
-        Random random = new Random();
-        int count = 0;
+        Scripture scripture = new Scripture();
+        scripture.HideRandomWords(0);
+        bool showOnlyFirstLetter = false;
 
-        while (count < numberToHide)
+        while (true)
         {
-            int index = random.Next(_words.Count);
-            if (!_words[index].IsHidden())
+
+            Console.Clear();
+            Console.WriteLine(scripture.GetDisplayText());
+            if (scripture.IsCompletelyHidden())
             {
-                _words[index].Hide();
-                count++;
+                Console.WriteLine("Congratulations! You have memorized the scripture!");
+                break;
             }
-        }
-    }
 
-    string GetDisplayText()
-    {
-        string displayText = _reference.GetDisplayText() + "\n";
-        foreach (Word word in _words)
-        {
-            displayText += word.GetDisplayText() + " ";
-        }
-        return displayText.Trim();
-    }
-    public bool IsCompletelyHidden()
-    {
-        foreach (Word word in _words)
-        {
-            if (!word.IsHidden())
+            Console.WriteLine("Press Enter to hide more words, or type 'quit' to exit or type 'clue' to get the first letter of every hidden word.");
+            string input = Console.ReadLine();
+            if (input.ToLower() == "quit")
             {
-                return false;
+                break;
             }
+            else if (input.ToLower() == "clue")
+            {
+                showOnlyFirstLetter = !showOnlyFirstLetter;
+                Console.WriteLine("Clue mode: " + (showOnlyFirstLetter ? "Showing first letters of hidden words." : "Showing full words."));
+                foreach (Word word in scripture._words)
+                {
+                    Console.Write(word.GetClue(showOnlyFirstLetter) + " ");
+                }
+                Console.WriteLine();
+                Console.ReadLine(); 
+                continue;
+            }
+            scripture.HideRandomWords(1);
         }
-        return true;
     }
-
-
 }
 
        
