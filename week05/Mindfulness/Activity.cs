@@ -2,9 +2,9 @@ using System;
 
 public class Activity
 {
-    public string _name;
-    public string _description;
-    public int _duration;
+    private string _name;
+    private string _description;
+    private int _duration;
 
     public Activity(string name, string description, int duration)
     {
@@ -21,6 +21,8 @@ public class Activity
         Console.WriteLine("Get ready...");
         System.Threading.Thread.Sleep(2000);
     }
+    
+    
     public void DisplayEndingMessage()
     {
         Console.WriteLine($"Well done! You have completed the {_name} activity.");
@@ -29,15 +31,29 @@ public class Activity
     }
     public void ShowSpinner(int seconds)
     {
-        Console.WriteLine($"Pausing for {seconds} seconds...");
-        System.Threading.Thread.Sleep(seconds * 1000);
+        List<string> spinner = new List<string> { };
+        spinner.Add("|");
+        spinner.Add("/");
+        spinner.Add("-");
+        spinner.Add("\\");
+
+        foreach (string s in spinner)
+        {
+            Console.Write(s);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+
     }
     public void ShowCountdown(int seconds)
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.WriteLine($"{i}");
-            System.Threading.Thread.Sleep(2000);
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
         }
     }
 }
+        
+    

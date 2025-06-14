@@ -30,16 +30,16 @@ public class ReflectingActivity : Activity
 
         GetRandomPrompt();
         Console.WriteLine("Take a moment to reflect on this prompt.");
-        ShowSpinner(15);
+        ShowSpinner(5);
 
         Console.WriteLine("Now, answer the following questions:");
         foreach (var question in _questions)
         {
             Console.WriteLine(question);
-            ShowSpinner(5);
+            ShowSpinner(15);
         }
 
-        ShowSpinner(_duration);
+        ShowSpinner(60);
         DisplayEndingMessage();
     }
     public void GetRandomPrompt()
@@ -48,7 +48,6 @@ public class ReflectingActivity : Activity
         int index = random.Next(_prompts.Count);
         string prompt = _prompts[index];
         Console.WriteLine($"Prompt: {prompt}");
-        Console.WriteLine("Take a moment to reflect on this prompt before you start answering questions.");
         ShowSpinner(15);
     }
 
@@ -58,7 +57,6 @@ public class ReflectingActivity : Activity
         int index = random.Next(_questions.Count);
         string question = _questions[index];
         Console.WriteLine($"Question: {question}");
-        Console.WriteLine("Take a moment to reflect on this question before you start answering.");
         ShowSpinner(15);
     }
 
@@ -68,7 +66,6 @@ public class ReflectingActivity : Activity
         int index = random.Next(_prompts.Count);
         string prompt = _prompts[index];
         Console.WriteLine($"Prompt: {prompt}");
-        Console.WriteLine("Take a moment to reflect on this prompt before you start answering.");
         ShowSpinner(15);
     }
     public void DisplayQuestions()

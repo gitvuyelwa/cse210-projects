@@ -13,6 +13,7 @@ public class ListingActivity : Activity
     };
     public ListingActivity() : base("Listing Activity", "This activity will help you reflect on the good things in your life by listing them.", 60)
     {
+        _count = 0;
     }
 
     public void Run()
@@ -38,7 +39,7 @@ public class ListingActivity : Activity
         }
 
         Console.WriteLine($"You listed {count} good things.");
-        ShowSpinner(_duration);
+        ShowSpinner(60);
 
         DisplayEndingMessage();
     }
