@@ -2,7 +2,7 @@ using System;
 
 public class ReflectingActivity : Activity
 {
-    List<string> _prompts = new List<string>
+    private List<string> _prompts = new List<string>
     {
         "What is something you are proud of?",
         "What is a challenge you have overcome?",
@@ -11,7 +11,7 @@ public class ReflectingActivity : Activity
         "What is a goal you want to achieve?"
     };
 
-    List<string> _questions = new List<string>
+    private List<string> _questions = new List<string>
     {
         "How does this make you feel?",
         "What can you learn from this experience?",

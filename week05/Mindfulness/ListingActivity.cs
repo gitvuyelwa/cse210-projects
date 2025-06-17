@@ -2,8 +2,8 @@ using System;
 
 public class ListingActivity : Activity
 {
-    public int _count;
-    List<string> _prompts = new List<string>
+    private int _count;
+    private List<string> _prompts = new List<string>
     {
         "What are some things you are grateful for?",
         "List some of your favorite memories.",

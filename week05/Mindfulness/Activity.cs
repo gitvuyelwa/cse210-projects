@@ -19,7 +19,7 @@ public class Activity
         Console.WriteLine(_description);
         Console.WriteLine($"This activity will last for {_duration} seconds.");
         Console.WriteLine("Get ready...");
-        System.Threading.Thread.Sleep(2000);
+        Thread.Sleep(2000);
     }
     
     
@@ -27,7 +27,7 @@ public class Activity
     {
         Console.WriteLine($"Well done! You have completed the {_name} activity.");
         Console.WriteLine("Thank you for participating!");
-        System.Threading.Thread.Sleep(2000);
+        Thread.Sleep(2000);
     }
     public void ShowSpinner(int seconds)
     {
